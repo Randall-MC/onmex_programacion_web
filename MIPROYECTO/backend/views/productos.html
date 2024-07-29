@@ -1,0 +1,97 @@
+<!-- Formulario de alta de productos -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../assets/css/estilos.css" />
+    <title>Alta de Productos</title>
+
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <header>
+      <h1>Alta de Productos</h1>
+    </header>
+    <main>
+      <form action="" method="post" enctype="multipart/form-data">
+        <fieldset>
+          <legend>Información del Producto</legend>
+
+          <div class="form-group">
+            <label for="producto-id">ID del Producto:</label>
+            <input type="number" id="producto-id" name="producto-id" required />
+          </div>
+
+          <div class="form-group">
+            <label for="producto-nombre">Nombre del Producto:</label>
+            <input
+              type="text"
+              id="producto-nombre"
+              name="producto-nombre"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="producto-imagen">Imagen del Producto:</label>
+            <input
+              type="file"
+              id="producto-imagen"
+              name="producto-imagen"
+              accept="image/*"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="producto-descripcion">Descripción del Producto:</label>
+            <textarea
+              id="producto-descripcion"
+              name="producto-descripcion"
+              rows="4"
+              required
+            ></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="producto-precio">Precio del Producto:</label>
+            <input
+              type="number"
+              step="0.01"
+              id="producto-precio"
+              name="producto-precio"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="producto-categoria">Categoría del Producto:</label>
+            <select id="producto-categoria" name="producto-categoria" required>
+              <!-- Las opciones se deben generar dinámicamente en base a las categorías existentes -->
+              <option value="1">Categoría 1</option>
+              <option value="2">Categoría 2</option>
+              <option value="3">Categoría 3</option>
+              <!-- etc. -->
+            </select>
+          </div>
+
+          <div class="form-group form-buttons">
+            <button type="submit" class="cancel">Cancelar</button>
+            <button type="submit">Guardar Producto</button>
+          </div>
+        </fieldset>
+      </form>
+    </main>
+
+    <footer>
+      <p>&copy; 2024 Randall MC</p>
+    </footer>
+
+    <script src="js/validaciones.js"></script>
+  </body>
+</html>
