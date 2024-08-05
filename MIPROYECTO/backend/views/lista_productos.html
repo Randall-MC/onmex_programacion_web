@@ -1,1 +1,51 @@
-<!-- Listado de productos existentes -->
+<?php
+/* @autor Randall Marquez */
+require_once '../class/autoload.php';
+
+$db = new Database();
+$conn = $db->getConnection(); $query = "SELECT p.id, p.nombre, p.descripcion,
+p.precio, p.imagen_url, c.nombre as categoria FROM productos p JOIN categorias c
+ON p.categoria_id = c.id"; $productos = $db->select($query); ?>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Lista de Productos</title>
+  </head>
+  <body>
+    <h1>Lista de Productos</h1>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Precio</th>
+          <th>Categoría</th>
+          <th>Imagen</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php foreach ($productos as $producto): ?>
+        <tr>
+          <td><?php echo $producto['id']; ?></td>
+          <td><?php echo $producto['nombre']; ?></td>
+          <td><?php echo $producto['descripcion']; ?></td>
+          <td><?php echo $producto['precio']; ?></td>
+          <td><?php echo $producto['categoria']; ?></td>
+          <td>
+            <img
+              src="<?php echo $producto['imagen_url']; ?>"
+              alt="Imagen del Producto"
+              width="100"
+            />
+          </td>
+        </tr>
+        <?php endforeach; ?>
+      </tbody>
+    </table>
+    <a href="productos.php">Agregar Producto</a>
+    <div style="text-align: center">Randall Marquez</div>
+  </body>
+</html>

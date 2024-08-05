@@ -1,59 +1,36 @@
-// Validar los formularios de productos y categorías
-
 $(document).ready(function () {
-  // Validar el formulario de categorías
-  $('form[action="#"]').on("submit", function (event) {
-    const categoriaId = $("#categoria-id").val().trim();
-    const categoriaNombre = $("#categoria-nombre").val().trim();
-    let errores = [];
+  $("form").on("submit", function (event) {
+    let isValid = true;
+    let invalidFields = [];
 
-    if (categoriaId === "") {
-      errores.push("ID de la Categoría");
-    }
-    if (categoriaNombre === "") {
-      errores.push("Nombre de la Categoría");
-    }
+    $(this)
+      .find("input, textarea, select")
+      .each(function () {
+        if ($.trim($(this).val()) === "") {
+          isValid = false;
+          invalidFields.push($(this).attr("name"));
+        }
+      });
 
-    if (errores.length > 0) {
+    if (!isValid) {
       event.preventDefault();
-      alert(
-        "Los siguientes campos no pueden estar vacíos o contener solo espacios en blanco: " +
-          errores.join(", ")
-      );
+      let message =
+        "Los siguientes campos son obligatorios y no pueden estar vacíos:\n" +
+        invalidFields.join(", ") +
+        "\n\nRandall M C";
+      showAlert(message);
     }
   });
 
-  // Validar el formulario de productos
-  $('form[action=""]').on("submit", function (event) {
-    const productoId = $("#producto-id").val().trim();
-    const productoNombre = $("#producto-nombre").val().trim();
-    const productoDescripcion = $("#producto-descripcion").val().trim();
-    const productoPrecio = $("#producto-precio").val().trim();
-    const productoCategoria = $("#producto-categoria").val().trim();
-    let errores = [];
-
-    if (productoId === "") {
-      errores.push("ID del Producto");
-    }
-    if (productoNombre === "") {
-      errores.push("Nombre del Producto");
-    }
-    if (productoDescripcion === "") {
-      errores.push("Descripción del Producto");
-    }
-    if (productoPrecio === "") {
-      errores.push("Precio del Producto");
-    }
-    if (productoCategoria === "") {
-      errores.push("Categoría del Producto");
-    }
-
-    if (errores.length > 0) {
-      event.preventDefault();
-      alert(
-        "Los siguientes campos no pueden estar vacíos o contener solo espacios en blanco: " +
-          errores.join(", ")
-      );
-    }
+  $("#custom-alert-close").on("click", function () {
+    $("#custom-alert").hide();
+    $("#overlay").hide(); // Ocultar el fondo de superposición
   });
 });
+
+function showAlert(message) {
+  const formattedMessage = message.replace(/\n/g, "<br>");
+  $("#custom-alert-message").html(formattedMessage); // Usar .html() para interpretar etiquetas HTML
+  $("#custom-alert").show();
+  $("#overlay").show(); // Mostrar el fondo de superposición
+}

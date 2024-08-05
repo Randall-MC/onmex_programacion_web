@@ -1,1 +1,36 @@
-<!-- Listado de categorías existentes -->
+<?php
+/* @autor Randall Marquez */
+require_once '../class/autoload.php';
+
+$db = new Database();
+$conn = $db->getConnection(); $query = "SELECT id, nombre FROM categorias";
+$categorias = $db->select($query); ?>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Lista de Categorías</title>
+  </head>
+  <body>
+    <h1>Lista de Categorías</h1>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php foreach ($categorias as $categoria): ?>
+        <tr>
+          <td><?php echo $categoria['id']; ?></td>
+          <td><?php echo $categoria['nombre']; ?></td>
+        </tr>
+        <?php endforeach; ?>
+      </tbody>
+    </table>
+    <a href="categorias.php">Agregar Categoría</a>
+    <div style="text-align: center">Randall Marquez</div>
+  </body>
+</html>

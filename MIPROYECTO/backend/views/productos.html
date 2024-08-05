@@ -73,6 +73,7 @@
             <label for="producto-categoria">Categoría del Producto:</label>
             <select id="producto-categoria" name="producto-categoria" required>
               <!-- Las opciones se deben generar dinámicamente en base a las categorías existentes -->
+              <option value="none"></option>
               <option value="1">Categoría 1</option>
               <option value="2">Categoría 2</option>
               <option value="3">Categoría 3</option>
@@ -81,7 +82,7 @@
           </div>
 
           <div class="form-group form-buttons">
-            <button type="submit" class="cancel">Cancelar</button>
+            <button type="reset" class="cancel">Cancelar</button>
             <button type="submit">Guardar Producto</button>
           </div>
         </fieldset>
@@ -92,6 +93,15 @@
       <p>&copy; 2024 Randall MC</p>
     </footer>
 
-    <script src="js/validaciones.js"></script>
+    <!-- Fondo de superposición -->
+    <div id="overlay" class="overlay"></div>
+
+    <!-- Contenedor para la alerta personalizada -->
+    <div id="custom-alert" class="custom-alert">
+      <span id="custom-alert-message"></span>
+      <button id="custom-alert-close">Cerrar</button>
+    </div>
+
+    <script src="../../assets/js/validaciones.js"></script>
   </body>
 </html>

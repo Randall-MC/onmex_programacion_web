@@ -1,0 +1,18 @@
+CREATE DATABASE IF NOT EXISTS MIPROYECTO;
+
+USE MIPROYECTO;
+
+CREATE TABLE IF NOT EXISTS categorias (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS productos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(255) NOT NULL,
+    descripcion TEXT,
+    precio DECIMAL(10, 2) NOT NULL,
+    categoria_id INT,
+    imagen_url VARCHAR(255),
+    FOREIGN KEY (categoria_id) REFERENCES categorias(id)
+);

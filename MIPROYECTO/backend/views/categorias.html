@@ -18,7 +18,7 @@
       <h1>Alta de Categorías</h1>
     </header>
     <main>
-      <form action="#" method="post">
+      <form action="../categorias.php" method="post">
         <fieldset>
           <legend>Información de la Categoría</legend>
 
@@ -42,7 +42,10 @@
             />
           </div>
 
-          <button type="submit">Guardar Categoría</button>
+          <div class="form-group form-buttons">
+            <button type="reset" class="cancel">Cancelar</button>
+            <button type="submit">Guardar Categoría</button>
+          </div>
         </fieldset>
       </form>
     </main>
@@ -50,6 +53,16 @@
     <footer>
       <p>&copy; 2024 Randall MC</p>
     </footer>
-    <script src="js/validaciones.js"></script>
+
+    <!-- Fondo de superposición -->
+    <div id="overlay" class="overlay"></div>
+
+    <!-- Contenedor para la alerta personalizada -->
+    <div id="custom-alert" class="custom-alert">
+      <span id="custom-alert-message"></span>
+      <button id="custom-alert-close">Cerrar</button>
+    </div>
+
+    <script src="../../assets/js/validaciones.js    "></script>
   </body>
 </html>
